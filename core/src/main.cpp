@@ -21,11 +21,20 @@ esp_err_t Main::setup(void)
 
     ESP_LOGI(LOG_TAG, "Hola!!");
 
+    status |= led.init();
+
     return status;
 }
 
 void Main::loop(void)
 {
     ESP_LOGI(LOG_TAG, "Hola Juy con un pipio en el brazo\n");
+
+    ESP_LOGI(LOG_TAG, "Led encendido");
+    led.set(false);
+    vTaskDelay(pdSECOND);
+
+    ESP_LOGI(LOG_TAG, "Led apagado\n");
+    led.set(true);
     vTaskDelay(pdSECOND);
 }
